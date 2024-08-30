@@ -11,14 +11,15 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+
 @AllArgsConstructor
+@Setter
+@Getter
 @EqualsAndHashCode
 
 @Entity
-@Table(name = "tb_category")
-public class Category implements Serializable {
+@Table(name = "tb_product")
+public class Product implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -26,16 +27,22 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
+    private String description;
+    private Double price;
+    private String imgUrl;
 
     @Transient
-    private Set<Product> products = new HashSet<>();
+    private Set<Category> categories = new HashSet<>();
 
-    public Category() {
+    public Product() {
+
     }
 
-    public Category(Long id, String eletronics) {
+    public Product(Long id, String name, String description, double price, String imgUrl) {
         this.id = id;
-        this.name = eletronics;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgUrl = imgUrl;
     }
 }

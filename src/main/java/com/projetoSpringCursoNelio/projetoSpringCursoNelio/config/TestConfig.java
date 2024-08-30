@@ -1,11 +1,9 @@
 package com.projetoSpringCursoNelio.projetoSpringCursoNelio.config;
 
-import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.Category;
-import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.Order;
-import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.OrderStatus;
-import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.User;
+import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.*;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.CantegoryRespository;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.OrderRepository;
+import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.ProductRespository;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -30,14 +28,24 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+   @Autowired
+    private ProductRespository productRespository;
+
     @Override
     public void run(String... args) throws Exception {
+
 
         Category cat1 = new Category(null,"Eletronics");
         Category cat2 = new Category(null,"Books");
         Category cat3 = new Category(null,"Computers");
 
+
+        Product product1 = new Product(null,"the Lord of the Rings","Lorem ipsum dolor sit ament", 100.00,"");
+        Product product2 = new Product(null,"Arroz","the sement is the color white", 33.00,"");
+        Product product3 = new Product(null,"MacBook","this is computer", 3500.00,"");
+
         cantegoryRespository.saveAll(Arrays.asList(cat1,cat2,cat3));
+        productRespository.saveAll(Arrays.asList(product1,product2,product3));
 
         User usuario = new User(null ,"Maria","maria@gmail.com","99999999","12345");
         User usuario2 = new User(null ,"Alex","alex@gmail.com","99999997","123456");
