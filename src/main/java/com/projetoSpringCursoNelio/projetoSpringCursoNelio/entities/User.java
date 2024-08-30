@@ -1,5 +1,6 @@
 package com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -30,6 +31,7 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+
 
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
