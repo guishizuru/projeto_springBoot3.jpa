@@ -1,6 +1,7 @@
 package com.projetoSpringCursoNelio.projetoSpringCursoNelio.config;
 
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.Order;
+import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.OrderStatus;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.User;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.OrderRepository;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.UserRepository;
@@ -30,9 +31,9 @@ public class TestConfig implements CommandLineRunner {
         User usuario2 = new User(null ,"Alex","alex@gmail.com","99999997","123456");
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        Order o1 = new Order(null, LocalDateTime.parse("2019-06-20T19:53:07.072", formatter), usuario);
-        Order o2 = new Order(null, LocalDateTime.parse("2019-07-21T03:42:10.102", formatter), usuario2);
-        Order o3 = new Order(null, LocalDateTime.parse("2019-07-22T15:21:22.222", formatter), usuario);
+        Order o1 = new Order(null, LocalDateTime.parse("2019-06-20T19:53:07.072", formatter), OrderStatus.PAID ,usuario);
+        Order o2 = new Order(null, LocalDateTime.parse("2019-07-21T03:42:10.102", formatter),OrderStatus.WAITING_PAYMENT ,usuario2);
+        Order o3 = new Order(null, LocalDateTime.parse("2019-07-22T15:21:22.222", formatter),OrderStatus.WAITING_PAYMENT ,usuario);
 
         userRepository.saveAll(Arrays.asList(usuario,usuario2));
         orderRepository.saveAll(Arrays.asList(o1,o2,o3));
