@@ -1,8 +1,10 @@
 package com.projetoSpringCursoNelio.projetoSpringCursoNelio.config;
 
+import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.Category;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.Order;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.OrderStatus;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.User;
+import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.CantegoryRespository;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.OrderRepository;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,20 @@ public class TestConfig implements CommandLineRunner {
     private UserRepository userRepository;
 
     @Autowired
+    private CantegoryRespository cantegoryRespository ;
+
+    @Autowired
     private OrderRepository orderRepository;
 
     @Override
     public void run(String... args) throws Exception {
+
+        Category cat1 = new Category(null,"Eletronics");
+        Category cat2 = new Category(null,"Books");
+        Category cat3 = new Category(null,"Computers");
+
+        cantegoryRespository.saveAll(Arrays.asList(cat1,cat2,cat3));
+
         User usuario = new User(null ,"Maria","maria@gmail.com","99999999","12345");
         User usuario2 = new User(null ,"Alex","alex@gmail.com","99999997","123456");
 
