@@ -1,7 +1,7 @@
 package com.projetoSpringCursoNelio.projetoSpringCursoNelio.config;
 
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.*;
-import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.CantegoryRespository;
+import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.CategoryRepository;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.OrderRepository;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.ProductRespository;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.UserRepository;
@@ -10,8 +10,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -23,7 +21,7 @@ public class TestConfig implements CommandLineRunner {
     private UserRepository userRepository;
 
     @Autowired
-    private CantegoryRespository cantegoryRespository ;
+    private CategoryRepository categoryRepository;
 
     @Autowired
     private OrderRepository orderRepository;
@@ -35,7 +33,7 @@ public class TestConfig implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
 
-        Category cat1 = new Category(null,"Eletronics");
+        Category cat1 = new Category(null,"Food");
         Category cat2 = new Category(null,"Books");
         Category cat3 = new Category(null,"Computers");
 
@@ -44,7 +42,13 @@ public class TestConfig implements CommandLineRunner {
         Product product2 = new Product(null,"Arroz","the sement is the color white", 33.00,"");
         Product product3 = new Product(null,"MacBook","this is computer", 3500.00,"");
 
-        cantegoryRespository.saveAll(Arrays.asList(cat1,cat2,cat3));
+        categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+        productRespository.saveAll(Arrays.asList(product1,product2,product3));
+
+        product1.getCategories().add(cat2);
+        product2.getCategories().add(cat1);
+        product3.getCategories().add(cat3);
+
         productRespository.saveAll(Arrays.asList(product1,product2,product3));
 
         User usuario = new User(null ,"Maria","maria@gmail.com","99999999","12345");

@@ -1,8 +1,6 @@
 package com.projetoSpringCursoNelio.projetoSpringCursoNelio.services;
 
-import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.Category;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.Product;
-import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.CantegoryRespository;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.ProductRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,9 +1,7 @@
 package com.projetoSpringCursoNelio.projetoSpringCursoNelio.services;
 
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.Category;
-import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.User;
-import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.CantegoryRespository;
-import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.UserRepository;
+import com.projetoSpringCursoNelio.projetoSpringCursoNelio.userRepositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +11,12 @@ import java.util.Optional;
 @Service
 public class CategoryService {
     @Autowired
-    private CantegoryRespository cantegoryRespository;
+    private CategoryRepository categoryRepository;
     public List<Category> findAll(){
-       return  cantegoryRespository.findAll();
+       return  categoryRepository.findAll();
     }
     public Category findByid(Long id){
-        Optional<Category> obj = cantegoryRespository.findById(id);
+        Optional<Category> obj = categoryRepository.findById(id);
         return obj.get();
     }
 }
