@@ -1,5 +1,6 @@
 package com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -37,9 +38,21 @@ public class Product implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
+    @OneToMany(mappedBy = "id.product")
+    private Set<OrderItem> items = new HashSet<>();
     public Product() {
 
     }
+    @JsonIgnore
+    public Set<Order> getOrders(){
+        Set<Order> set = new HashSet<>();
+
+        for (OrderItem x : items){
+            set.add(x.getOrder());
+        }
+        return set;
+    }
+
 
     public Product(Long id, String name, String description, double price, String imgUrl) {
         this.id = id;

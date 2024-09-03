@@ -1,4 +1,4 @@
-package com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.pk;
+package com.projetoSpringCursoNelio.projetoSpringCursoNelio.pk;
 
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.Order;
 import com.projetoSpringCursoNelio.projetoSpringCursoNelio.entities.Product;
