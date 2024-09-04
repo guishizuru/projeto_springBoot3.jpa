@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -69,5 +70,13 @@ public class TestConfig implements CommandLineRunner {
         OrderItem orderItem4 = new OrderItem(o3,product2,1, product1.getPrice());
 
         orderItemRepository.saveAll(Arrays.asList(orderItem1,orderItem2,orderItem3,orderItem4));
+
+        Payment pay1 = new Payment(null, LocalDateTime.parse("2019-06-20T19:53:07.072", formatter),o1);
+
+        o1.setPayment(pay1);
+        orderRepository.save(o1);
+
+        Payment pay2 = new Payment(null, LocalDateTime.parse("2019-06-20T19:53:07.072", formatter),o2);
+        Payment pay3 = new Payment(null, LocalDateTime.parse("2019-06-20T19:53:07.072", formatter),o3);
     }
 }
